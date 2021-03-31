@@ -205,7 +205,7 @@ $$
 $$
 
 
-![myplot](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab7/graph/myplot.png)
+![myplot](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab7/graph/myplot.png "Case 1")
 
 
 $$
