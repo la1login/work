@@ -3,73 +3,43 @@ from scipy. integrate import odeint
 import matplotlib.pyplot as pl
 import math
 
-t0 = 0
 
-x0 = 20
+p_cr = 35
+tau1 = 14
+p1 = 6.5
+tau2 = 7
+p2 = 15
+V = 41
+q = 1
 
-N = 2300
+x0 = [5.5, 5]
+a1 = p_cr/(tau1*tau1*p1*p1*V*q)
+a2 = p_cr/(tau2*tau2*p2*p2*V*q)
 
-k = 0.205
+b = p_cr/(tau1*tau1*tau2*tau2*p1*p1*p2*p2*V*q)
 
-p = 0.000023
+c1 = (p_cr-p1)/(tau1*p1)
+c2 = (p_cr-p2)/(tau2*p2)
 
-t = numpy.arange(t0, 30, 2)
+t = numpy.arange(0, 30, 0.01)
 
 def syst(dx, t):
-    x = dx
-    return (k + p*x)*(N-x)
+    dx1, dx2 = dx
+    return[dx1 - (a1/c1)*dx1*dx1 - (b/c1)*dx1*dx2, (c2/c1)*dx2 - (a2/c1)*dx2*dx2 - (b/c1)*dx1*dx2]
 
-solution = odeint(syst, x0, t)
+y = odeint(syst, x0, t)
+
 
 fig1 = pl.figure(facecolor='white')
-pl.plot(t, solution)
-pl.xlabel("Time")
-pl.ylabel("Clients")
+pl.plot(t, y)
 pl.show()
 
-k1 = 0.0000305
+def syst(dx, t):
+    dx1, dx2 = dx
+    return[dx1 - (a1/c1)*dx1*dx1 - (b/c1+0.002)*dx1*dx2, (c2/c1)*dx2 - (a2/c1)*dx2*dx2 - (b/c1)*dx1*dx2]
 
-p1 = 0.24
-
-def syst1(dx, t):
-    x = dx
-    return (k1 + p1*x)*(N-x)
-
-solution1 = odeint(syst1, x0, t)
+y1 = odeint(syst, x0, t)
 
 fig2 = pl.figure(facecolor='white')
-pl.plot(t, solution1)
-pl.xlabel("Time")
-pl.ylabel("Clients")
-pl.show()
-
-
-def k(q):
-    k = 0.05*math.sin(q)
-    return k
-
-def p(q):
-    p = 0.03*math.cos(4*q)
-    return p
-
-q = numpy.arange(t0, 0.1, 0.001)
-
-def syst2(dx, q):
-    x = dx
-    return (k(q) + p(q)*x)*(N-x)
-
-solution2 = odeint(syst2, x0, q)
-
-fig3 = pl.figure(facecolor='white')
-pl.plot(q, solution2)
-pl.xlabel("Time")
-pl.ylabel("Clients")
-pl.show()
-
-dyy = (k1 + p1*solution1)*(N-solution1)
-
-fig4 = pl.figure(facecolor='white')
-pl.plot(t, dyy)
-pl.xlabel("Time")
-pl.ylabel("Clients")
+pl.plot(t, y1)
 pl.show()
