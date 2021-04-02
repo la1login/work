@@ -265,7 +265,7 @@ M_1 = 2, \\ \space
 $$
 При таких условиях получаем следующие динамики изменения объемов продаж:  
 
-![График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).](C:\Users\itsok\work\2020-2021\MatModel\laboratory\lab8\graph\1.png "График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).")
+![График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab8/graph/1.png "График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).")
 
 
 
@@ -303,7 +303,7 @@ $$
 
 Начальные условия и известные параметры остаются прежними. В этом случаем получим следующее решение:  
 
-![График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).](C:\Users\itsok\work\2020-2021\MatModel\laboratory\lab8\graph\2.png "График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).")
+![График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab8/graph/2.png "График изменения оборотных средств фирмы 1 (синий) и фирмы 2 (зеленый).")
 
 
 
@@ -449,13 +449,13 @@ fig2 = рl.figure(faсeсоlоr='white')
 
 Результат выполнения:  
 
-![Случай 1](C:\Users\itsok\work\2020-2021\MatModel\laboratory\lab8\graph\3.png "Случай 1")
+![Случай 1](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab8/graph/3.png "Случай 1")
 
   
 
 ​													
 
-![Случай 2](C:\Users\itsok\work\2020-2021\MatModel\laboratory\lab8\graph\4.png "Случай 2")
+![Случай 2](https://github.com/la1login/work/blob/master/2020-2021/MatModel/laboratory/lab8/graph/4.png "Случай 2")
 
 
 
