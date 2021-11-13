@@ -24,32 +24,28 @@
   ! функция
   !----------------------------------------------------------------
   function trapezoidal(func, a, b, n, threads_num) result (res)
-    use omp_lib
     implicit none
+    include "omp_lib.h"
     procedure(f) :: func
     real(real64), intent(in) :: a, b
     integer(int64), intent(in) :: n
     integer(int64), intent(in) :: threads_num
-    real(real64) :: res, step
-    real(real64), allocatable :: tmp(:) 
-    integer(int64) :: th, i
-    real(real64) :: xi
-    
-    allocate(tmp(threads_num))
-    step = (b - a) / real((n - 1), real64)
-    res = (step / 2.0) * (func(a) + func(b))
-    tmp = 0
+    real(real64) :: h, res
+    integer :: i, th
+    real(real64), allocatable :: arr_tr(:)
 
-    !$omp parallel private(th, i, xi) num_threads(threads_num)
-    th = omp_get_thread_num()
-    do i = th + 1, (n - 1), threads_num
-        xi = a + i * step
-        tmp(th + 1) = tmp(th + 1) + func(xi) * step
+    if( .not. allocated(arr_tr) ) allocate(arr_tr(threads_num))
+    h = (b - a)/n ! вычисляем шаг как разница между верхним и нижним пределом 
+    !интегрирования деленная на число точек разбиения
+    !$omp parallel private(i) num_threads(threads_num)
+    th = omp_get_thread_num() + 1
+    do i = 1, n-1, threads_num
+      arr_tr(th) = arr_tr(th) + func(a + i * h) * h ! суммируем, res общая для всех потоков 
     end do
     !$omp end parallel
+    res = sum(arr_tr) + h / 2 * (func(a) + func(b)) ! дописываем формулу, получив значение суммы
 
-    res = res + sum(tmp)
-    deallocate(tmp)
+
   end function trapezoidal
 
 end module trapezoidal_rule
