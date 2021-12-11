@@ -47,25 +47,27 @@ private
     integer(int32), intent(in) :: ths_num
     real(real64) :: M
     integer(int64) :: length, i
-    real(real64), allocatable :: arr_for_max(:)
+    real(real64), allocatable :: arr_for_max(:) ! массив для хранения максимумов из каждого потока
 
-    if( .not. allocated(arr_for_max) ) allocate(arr_for_max(ths_num))
+    if( .not. allocated(arr_for_max) ) allocate(arr_for_max(ths_num)) ! выделение памяти
+
 
     !$omp parallel private(i, length) num_threads(ths_num)
     
-    length = omp_get_thread_num()+1
+    length = omp_get_thread_num()+1 ! упрощаем работу в цикле
     do i = 1, ths_num, ths_num
-      arr_for_max(length) = A(length)
+      arr_for_max(length) = A(length) ! заполняем массив для максимумов первыми элементами массива А для дальнейшего сравнения
     end do
-    do i = 1, size(A) - ths_num, ths_num
+    do i = 1, size(A) - ths_num, ths_num ! цикл сравнения элементов вида а(n) и a(n+1) но с учетом выполнения в потоках
       if (arr_for_max(length) < A(length + ths_num)) then
         arr_for_max(length) = A(length + ths_num)
       end if
     end do
     !$omp end parallel
-    M = maxval(arr_for_max)
+    M = maxval(arr_for_max) ! находим максимальное значение из тех, которые нашел каждый поток
   end function omp_max
   
+  ! минимум находим по тому же принципу, что и максимум
   function omp_min(A, ths_num) result(M)
     implicit none
     include "omp_lib.h"
