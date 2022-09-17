@@ -1,0 +1,53 @@
+#'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '
+def cesar():
+    alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '
+    step = int(input('Enter step: '))
+    text = input('Enter text: ')
+    result = ''
+    for i in text:
+        indx = alph.find(i)
+        newindx = indx + step
+        if i in alph:
+            result += alph[newindx]
+        else:
+            result += i
+    print(result)
+
+def def_cesar():
+    alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '
+    step = int(input('Enter step: '))
+    text = input('Enter text: ')
+    result = ''
+    for i in text:
+        indx = alph.find(i)
+        newindx = indx - step
+        if i in alph:
+            result += alph[newindx]
+        else:
+            result += i
+    print(result)
+
+def atbash():
+    alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+    alph_r = alph[::-1]
+    text = input('Enter text: ')
+    result = ''
+    for i in text:
+        for j, k in enumerate(alph):
+            if i == k:
+                result += alph_r[j]               
+    print(result)
+
+def def_atbash():
+    alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+    alph_r = alph[::-1]
+    text = input('Enter text: ')
+    result = ''
+    for i in text:
+        for j, k in enumerate(alph_r):
+            if i == k:
+                result += alph[j]                
+    print(result)
+
+for func in [cesar, def_cesar, atbash, def_atbash]:
+    func()
