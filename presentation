@@ -1,0 +1,42 @@
+---
+## Front matter
+lang: ru-RU
+title: Imperial College London
+author: Sergey Loginov, Malik Gafirov
+institute: People Friendship University of Russia
+date: November 11, 2022, Moscow, Russia
+
+## Formatting
+mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+toc: false
+slide_level: 2
+theme: metropolis
+header-includes: 
+ - \metroset{progressbar=frametitle,sectionpage=progressbar,numbering=fraction}
+ - '\makeatletter'
+ - '\beamer@ignorenonframefalse'
+ - '\makeatother'
+aspectratio: 43
+section-titles: true
+
+---
+
+
+
+## Imperial College London (ICL)
+
+ICL was founded in 1907  
+Budget £1.072 billion for 2021/2022
+
+\includegraphics[scale=0.5]{image/0.jpg}
+
+\includegraphics[scale=0.5]{image/0.jpg}
+# Выводы
+
+## Результаты выполнения лабораторной работы
+\includegraphics[scale=0.5]{image/0.jpg}
+
+Изучили алгоритм Евклида нахождения НОД.
