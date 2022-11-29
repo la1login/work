@@ -1,2 +1,2 @@
 .DS_Store
-/net_modeling/lab1-checkpoint.ipynb
+*.ipynb_checkpoints
